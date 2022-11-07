@@ -17,20 +17,16 @@ const userSchema = new Schema(
         // use REGEX to validate correct email
         match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/]
     },
-   
-    thoughts: [thoughtSchema],
 
-    // thoughts: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Thoughts'
-    // }],
-
-    friends: [userSchema],
+    thoughts: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Thought'
+    }],
     
-    // friends: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Users'
-    // }],
+    friends: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
 
   },
   {

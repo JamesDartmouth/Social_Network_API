@@ -5,18 +5,13 @@ module.exports = {
   // Get all thoughts
   getAllUsers(req, res) {
     User.find()
-         // .populate({path: 'thoughts',select: '-__v'})
-    //   .populate({path: 'friends', select: '-__v'})
-      //.select('-__v')
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
+
   // Get a single thought
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
-      // .populate({path: 'thoughts',select: '-__v'})
-    //   .populate({path: 'friends', select: '-__v'})
-      .select('-__v')
       .then((user) =>
         !user
           ? res.status(404).json({ message: 'No user with that ID' })
@@ -41,8 +36,9 @@ module.exports = {
       .then((user) =>
         !user
           ? res.status(404).json({ message: 'No user with that ID' })
-          : res.json(user)
+          : Thought.deleteMany({ _id: { $in: user.thoughts } })
       )
+      .then(() => res.json({ message: 'User and thoughts deleted!' }))
       .catch((err) => res.status(500).json(err));
   },
 
@@ -64,36 +60,31 @@ module.exports = {
   },
 
 
-  // Add a reaction---------freinds:params.friendId
+  // Add a friend---------freinds:params.friendId
   addFriend(req, res) {
     User.findOneAndUpdate(
-      { _id: params.userId },
-      { $addToSet: { friends: req.body } },
+      { _id: req.params.userId },
+      { $addToSet: { friends: req.params.friendsId } },
       { new: true, runValidators: true }
     )
-      // .populate({path: 'friends', select: '-__v'})
-      // .select('-__v')
-
       .then((user) =>
         !user
-          ? res.status(404).json({ message: 'No user with this id!' })
+          ? res.status(404).json({ message: 'No friend with this id!' })
           : res.json(user)
       )
       .catch((err) => res.status(500).json(err));
   },
 
-  // Delete a Reaction--------freinds:params.friendId..req.body
-  deleteFriend(req, res) {
-    User.findOneAndDelete(
+  // Delete a friend--------freinds:params.friendId..req.body
+  removeFriend(req, res) {
+    User.findOneAndRemove(
       { _id: req.params.userId },
       { $pull: { friends: { friendId: params.friendId } } },
       { new: true })
- // .populate({path: 'friends', select: '-__v'})
-      // .select('-__v')
 
       .then((thought) =>
         !thought
-          ? res.status(404).json({ message: 'No thought with that ID' })
+          ? res.status(404).json({ message: 'No friend with that ID' })
           : res.json(thought)
       )
       .catch((err) => res.status(500).json(err));
