@@ -1,5 +1,5 @@
 
-module.exports = () => {
+// module.exports = () => {
 
     const now = new Date()
     console.log(now)
@@ -24,8 +24,8 @@ module.exports = () => {
 
     const timestamp = `${month} ${day}, ${year} at ${hours}:${minutes}`;
   
-    return timestamp;
-}
+//     return timestamp;
+// }
 
 module.exports = timestamp;
 
