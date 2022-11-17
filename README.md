@@ -1,27 +1,36 @@
 # Social_Network_API
 
-AS A social media startup
-I WANT an API for my social network that uses a NoSQL database
-SO THAT my website can handle large amounts of unstructured data
+## Description
 
-GIVEN a social network API
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
-WHEN I open API GET routes in Insomnia for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
-WHEN I test API POST, PUT, and DELETE routes in Insomnia
-THEN I am able to successfully create, update, and delete users and thoughts in my database
-WHEN I test API POST and DELETE routes in Insomnia
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+A Social Media Startup App with a social network api that uses a NoSQL database to handle large amounts of unstructured data. Users are able to add/remove friends and add/update/delete thoughts as well as reactions to thoughts.
 
-// example data
-{
-  "thoughtText": "Here's a cool thought...",
-  "username": "lernantino",
-  "userId": "5edff358a0fcb779aa7b118b"
-}
-// example data
-{
-  "username": "lernantino",
-  "email": "lernantino@gmail.com"
-}
+## Usage
+
+
+User can find deployed app at [Deployed](https://github.com/JamesDartmouth/Social_Network_API/settings/pages)
+
+Repot can be found at [Repo](https://github.com/JamesDartmouth/Social_Network_API)
+
+GIF: File were to large were gif, so links are provided the webm file.
+
+WEBM
+[USER ROUTES](./assets/Getting%20Started%20webm.webm)
+[THOUGHT ROUTES](./assets/GET%20ALL%20webm.webm)
+[FRIEND ROUTES](./assets/GET%20by%20ID%20webm.webm)
+[THOUGHT ROUTES](./assets/Category%20Post%20Put%20Delete%20webm.webm)
+
+## Credits
+
+Thank you to the Instructors, TAs, and Tutors
+
+
+## License
+
+## Badges
+
+## Features
+
+## How to Contribute
+
+
+## Tests
